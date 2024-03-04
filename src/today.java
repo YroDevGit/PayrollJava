@@ -248,6 +248,8 @@ else{
     sql.deleteTask(id);
     this.showTaskToday();
     JOptionPane.showMessageDialog(this, "Data deleted successfully");
+    task.setText("");
+    hours.setText("");
 }
 
 // TODO add your handling code here:
