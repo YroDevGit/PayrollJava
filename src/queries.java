@@ -126,5 +126,17 @@ public class queries {
             Logger.getLogger(queries.class.getName()).log(Level.SEVERE, null, ex);
         }
    }
+   
+   public void deleteTask(int id){
+       try{
+           String query = "delete from timesheet where t_id = ?";
+                PreparedStatement ps = sql.setQuery(query);
+                ps.setInt(1, id);
+                ps.executeUpdate();
+                ps.close();
+       } catch (SQLException ex) {
+            Logger.getLogger(queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   }
     
 }
