@@ -68,6 +68,10 @@ public class queries {
         try {
             String query = "insert into timesheet values(null,?,?,?,?, 0)";
             PreparedStatement ps = sql.setQuery(query);
+            ps.setInt(1, user);
+            ps.setString(2, task);
+            ps.setDouble(3, hours);
+            ps.setString(4, date);
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(queries.class.getName()).log(Level.SEVERE, null, ex);
@@ -88,6 +92,8 @@ public class queries {
         }
         
    }
+   
+   
    
    
    public String dateToday(){
@@ -111,9 +117,28 @@ public class queries {
    
    public void showTodayTask(int id ,JTable table){
        try{
-           String query = "select * from timesheet where task_date like ?";
+           String query = "select * from timesheet where task_date like ? and user_id = ?";
                 PreparedStatement ps = sql.setQuery(query);
                 ps.setString(1, dateToday());
+                ps.setInt(2, id);
+                 ResultSet rs = ps.executeQuery();
+                 DefaultTableModel tab = (DefaultTableModel) table.getModel();
+                 tab.setRowCount(0);
+                 while(rs.next()){
+                    tab.addRow(new Object[]{rs.getString(1), rs.getString(3),rs.getString(4), rs.getString(5)});
+                 }
+                 ps.close();
+                 rs.close();
+       } catch (SQLException ex) {
+            Logger.getLogger(queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   }
+   
+   public void showTask(int id ,JTable table){
+       try{
+           String query = "select * from timesheet where user_id = ?";
+                PreparedStatement ps = sql.setQuery(query);
+                ps.setInt(1, id);
                  ResultSet rs = ps.executeQuery();
                  DefaultTableModel tab = (DefaultTableModel) table.getModel();
                  tab.setRowCount(0);
