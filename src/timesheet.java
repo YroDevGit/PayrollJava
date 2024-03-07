@@ -231,7 +231,7 @@ queries sql = new queries();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-if(task.getText().equals("")||hours.getText().equals("")){
+if(task.getText().equals("")||hours.getText().equals("")||jDateChooser1.getDate()==null){
        JOptionPane.showMessageDialog(this, "Please don't skip empty fields","erro", JOptionPane.ERROR_MESSAGE);
 }
 else{
