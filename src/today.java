@@ -223,13 +223,17 @@ queries sql = new queries();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(task.getText().equals("")||hours.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Please don't skip empty fields","erro", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            
         String tsk = task.getText();
-        double hrs = Double.parseDouble(hours.getText());
-        
+        double hrs = Double.parseDouble(hours.getText());      
         sql.addTaskToday(local_id, tsk, hrs);
-        
         JOptionPane.showMessageDialog(this, "Data inserted Successfully");
         this.showTaskToday();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
