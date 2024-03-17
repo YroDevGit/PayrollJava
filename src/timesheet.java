@@ -238,7 +238,6 @@ else{
         
         Date d = jDateChooser1.getDate();
         String dateString = dateFormat.format(d);
-        System.out.println(dateString);
         sql.addTask(local_id, task.getText(), Double.parseDouble(hours.getText()),dateString );
         
         JOptionPane.showMessageDialog(this, "Data inserted Successfully");

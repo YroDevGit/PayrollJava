@@ -24,7 +24,7 @@ public class queries {
    public int login(String username, String password){
        int ret =0;
        try {
-       String query = "select * from users where username  = ? and password = ? and role != 1";
+       String query = "select * from users where username  = ? and password = ?";
        PreparedStatement ps = sql.setQuery(query);
        ps.setString(1, username);
        ps.setString(2, password);
@@ -159,6 +159,42 @@ public class queries {
                 ps.setInt(1, id);
                 ps.executeUpdate();
                 ps.close();
+       } catch (SQLException ex) {
+            Logger.getLogger(queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   }
+   
+   
+   public void addEmployee(String fullname,String bday, String contact, String address,int role, String hire,String username, String password,String image,String vcode){
+        try{
+        PreparedStatement ps = sql.setQuery("insert into users values(null,?,?,?,?,?,?,?,?,?,0,0,?)");
+        ps.setString(1, fullname);
+        ps.setString(2, bday);
+        ps.setString(3, contact);
+        ps.setString(4, address);
+        ps.setInt(5, role);
+        ps.setString(6, hire);
+        ps.setString(7, username);
+        ps.setString(8, password);
+        ps.setString(9, "");
+        ps.setString(10, vcode);
+        ps.executeUpdate();
+        ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   }
+   
+   
+   public void showEmployee(JTable table){
+       try{
+           PreparedStatement ps = sql.setQuery("select * from users");
+           ResultSet rs = ps.executeQuery();
+           DefaultTableModel tab= (DefaultTableModel) table.getModel();
+           tab.setRowCount(0);
+           while(rs.next()){
+               tab.addRow(new Object[]{rs.getString(1), rs.getString(2),rs.getString(4),rs.getString(5),rs.getString(8),rs.getString(9)});
+           }
        } catch (SQLException ex) {
             Logger.getLogger(queries.class.getName()).log(Level.SEVERE, null, ex);
         }

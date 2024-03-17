@@ -195,9 +195,17 @@ public void Login(){
      String username = uname.getText();
       String password = new String(pword.getPassword());
       int log = sql.login(username, password);
+       System.out.println(log);
       if(log !=0){
+          if(log==1){
+             new Employee().setVisible(true);
+             this.setVisible(false);
+             
+          }
+          else{
           new MainPage(log).setVisible(true);
           this.setVisible(false);
+          }
       }
       else{
           JOptionPane.showMessageDialog(this, "Account not found\nPlease input valid login details","Error", JOptionPane.ERROR_MESSAGE);
