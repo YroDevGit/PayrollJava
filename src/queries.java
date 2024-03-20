@@ -188,13 +188,24 @@ public class queries {
    
    public void showEmployee(JTable table){
        try{
-           PreparedStatement ps = sql.setQuery("select * from users");
+           PreparedStatement ps = sql.setQuery("select * from users where user_id != 1");
            ResultSet rs = ps.executeQuery();
            DefaultTableModel tab= (DefaultTableModel) table.getModel();
            tab.setRowCount(0);
            while(rs.next()){
                tab.addRow(new Object[]{rs.getString(1), rs.getString(2),rs.getString(4),rs.getString(5),rs.getString(8),rs.getString(9)});
            }
+       } catch (SQLException ex) {
+            Logger.getLogger(queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   }
+   
+   public void deleteEmployee(int id){
+       try{
+           PreparedStatement ps = sql.setQuery("delete from users where user_id = ?");
+           ps.setInt(1, id);
+           ps.executeUpdate();
+           ps.close();
        } catch (SQLException ex) {
             Logger.getLogger(queries.class.getName()).log(Level.SEVERE, null, ex);
         }

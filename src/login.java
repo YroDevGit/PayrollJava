@@ -199,7 +199,7 @@ public void Login(){
        System.out.println(log);
       if(log !=0){
           if(log==1){
-             new Employee().setVisible(true);
+             new admin().setVisible(true);
              this.setVisible(false);
              
           }
