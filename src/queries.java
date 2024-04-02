@@ -222,7 +222,7 @@ public class queries {
                double salary = rs.getDouble(3);
                double hours = rs.getDouble(4);
                double rate = salary * hours;
-               tab.addRow(new Object[]{".",rs.getString(1),rs.getString(2),salary, hours, rate});
+               tab.addRow(new Object[]{".",rs.getString(1),rs.getString(2),salary, hours, "₱"+rate});
            }
            ps.close();
            rs.close();
