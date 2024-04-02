@@ -210,5 +210,25 @@ public class queries {
             Logger.getLogger(queries.class.getName()).log(Level.SEVERE, null, ex);
         }
    }
+   
+   public void getSalary(JTable table, String date){
+       try{
+           PreparedStatement ps = sql.setQuery("SELECT u.full_name,r.role_desc,r.Salary, SUM(t.task_hours) FROM users u, timesheet t, roles r WHERE u.user_id = t.user_id AND u.role = r.role_id AND t.task_date LIKE ? GROUP BY u.user_id");
+           ps.setString(1, "%"+date+"%");
+           ResultSet rs = ps.executeQuery();
+           DefaultTableModel tab = (DefaultTableModel) table.getModel();
+           tab.setRowCount(0);
+           while(rs.next()){
+               double salary = rs.getDouble(3);
+               double hours = rs.getDouble(4);
+               double rate = salary * hours;
+               tab.addRow(new Object[]{".",rs.getString(1),rs.getString(2),salary, hours, rate});
+           }
+           ps.close();
+           rs.close();
+       } catch (SQLException ex) {
+            Logger.getLogger(queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   }
     
 }

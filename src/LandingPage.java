@@ -46,14 +46,17 @@ public class LandingPage extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel2.setText("LOGIN");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setText("FEATURES");
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel4.setText("HOW IT WORKS");
-
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\WINDOWS\\Downloads\\mangopay")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -88,8 +91,6 @@ public class LandingPage extends javax.swing.JFrame {
                         .addComponent(jLabel5)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\WINDOWS\\Downloads\\Premium Vector _ Home office concept, woman working from home, student or freelancer_.jpg")); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         jLabel7.setText("MANAGED AND AUTOMATED");
@@ -146,7 +147,14 @@ public class LandingPage extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+new login().setVisible(true);
+this.setVisible(false);
+// TODO add your handling code here:
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
