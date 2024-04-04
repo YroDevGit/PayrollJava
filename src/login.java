@@ -29,7 +29,7 @@ queries sql = new queries();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(51, 153, 0));
+        jPanel2.setBackground(new java.awt.Color(0, 204, 0));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -199,7 +199,7 @@ public void Login(){
        System.out.println(log);
       if(log !=0){
           if(log==1){
-             new Employee().setVisible(true);
+             new admin().setVisible(true);
              this.setVisible(false);
              
           }
